@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Medicine Reminder</title>
+    <style>
+        /* General styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #bcd5dc;
+            padding-top: 60px; /* Space for top bar */
+        }
+
+        /* Top Space */
+        .top-space {
+            width: 100%;
+            height: 50px;
+            background-color: rgb(217, 147, 147);
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Sidebar */
+        .cha {
+            width: 250px;
+            height: 100vh;
+            background-color: #111;
+            color: white;
+            position: fixed;
+            top: 0;
+            left: -250px;
+            transition: 0.3s;
+            padding-top: 60px;
+        }
+
+        .cha.active {
+            left: 0;
+        }
+
+        .cha h2 {
+            text-align: center;
+            padding: 20px;
+            background: #222;
+            margin: 0;
+        }
+
+        .menu-item {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            text-decoration: none;
+            color: white;
+            font-size: 18px;
+            transition: 0.3s;
+        }
+
+        .menu-item:hover {
+            background: #333;
+        }
+
+        .menu-item i {
+            margin-right: 10px;
+        }
+        /* Main Content */
+        .main-content {
+            margin-left: 20px;
+            padding: 20px;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #bbe3ef;
+            padding-top: 60px; /* Space for top bar */
+        }
+
+        /* Top Space */
+        .topspace {
+            width: 100%;
+            height: 65px; /* Height of top space */
+            background-color: rgb(35, 37, 37);
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+            box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center; /* Optional shadow */
+        }
+        .topspace h1 {
+            color: rgb(246, 239, 239);
+            font-size: 20px;
+            margin: 0;
+        }
+
+
+        /* Sidebar */
+        .sidebar {
+            width: 250px;
+            height: 90vh; /* Sidebar takes full height */
+            background-color: rgb(77, 80, 77);
+            padding: 20px;
+            padding-top:20px;
+            position: fixed;
+            top: 75px; /* Adjusted for top space */
+            left: 0;
+            color: white;
+            display: flex;
+            flex-direction: column;
+            border-top-right-radius: 30px;
+            border-bottom-right-radius: 30px;
+            margin-top: 25px;
+            
+        }
+
+        .sidebar h2 {
+            text-align: center;
+            border-bottom: 2px solid white;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+
+        /* Main Content */
+        .menu-item {
+            display: flex;
+            align-items: center;
+            padding: 10px;
+            color: rgb(238, 231, 231);
+            text-decoration: none;
+        }
+        .menu-item:hover {
+            background: #555;
+        }
+        .main-content {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+        .form-container {
+            background: white;
+            padding: 20px;
+            width: 500px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+        }
+        h1 {
+            color: blue;
+            text-align: center;
+            font-size: 20px;
+        }
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin: 5px 0;
+            font-weight: bold;
+            font-size: 14px;
+        }
+        input, select {
+            padding: 8px;
+            font-size: 14px;
+            width: 100%;
+            margin-bottom: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        button {
+            background-color: blue;
+            color: white;
+            padding: 10px;
+            font-size: 16px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        button:hover {
+            background-color: darkblue;
+        }
+    </style>
+</head>
+<body>
+    <div class="topspace">
+        <h1>Welcome to Medicine Reminder</h1>
+    </div>
+
+    <!-- Sidebar -->
+    <div class="cha" id="cha">
+        <h2>My Menu</h2>
+        <div class="sidebar">
+            <h2>Medicine Reminder</h2>
+            <a href="./extra.html" class="menu-item">&#9776; Home</a>
+            <a href="#" class="menu-item">&#9776; Track Medicine Intake</a>
+            <a href="#" class="menu-item">&#128279; Dashboard</a>
+            <a href="#" class="menu-item">&#128196; Caregiver Access</a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        
+        <div class="form-container">
+                <h2>Enter Medicine Details</h2>
+                <form id="medicineForm">
+                    <label>Patient Name:</label>
+                    <input type="text" placeholder="Enter Patient Name" required>
+
+                    <label>Patient Phone Number:</label>
+                    <input type="tel" placeholder="Enter Phone Number" pattern="[0-9]{10}" required>
+
+                    <label>Medicine Name:</label>
+                    <input type="text" placeholder="Enter Medicine Name" required>
+
+                    <label>Type:</label>
+                    <select>
+                        <option>Tablet</option>
+                        <option>Capsule</option>
+                        <option>Syrup</option>
+                        <option>Injection</option>
+                    </select>
+
+                    <label>Medicine Quantity:</label>
+                    <input type="number" placeholder="Enter Quantity" required>
+
+                    <label>Start Date:</label>
+                    <input type="date" required>
+
+                    <label>End Date:</label>
+                    <input type="date" required>
+
+                    <!-- Timer for reminder -->
+                    <label>Reminder Time:</label>
+                    <input type="time" id="reminderTime" required>
+
+                    <button type="submit">Set Reminder</button>
+                </form>
+                <p id="reminderMessage"></p>
+          </div>
+      </div>
+
+    <script>
+        document.getElementById("medicineForm").addEventListener("submit", function(event) {
+            event.preventDefault(); 
+
+            // Get reminder time
+            let reminderTime = document.getElementById("reminderTime").value;
+            if (!reminderTime) {
+                alert("Please set a reminder time.");
+                return;
+            }
+
+            // Set reminder
+            let reminderMessage = document.getElementById("reminderMessage");
+            reminderMessage.innerText = `Reminder set for ${reminderTime}. You will receive a notification.`;
+
+            // Schedule the reminder
+            let now = new Date();
+            let reminderDate = new Date();
+            let timeParts = reminderTime.split(":");
+            reminderDate.setHours(timeParts[0], timeParts[1], 0, 0);
+
+            let timeDiff = reminderDate - now;
+            if (timeDiff < 0) {
+                timeDiff += 24 * 60 * 60 * 1000; // Set for next day
+            }
+
+            setTimeout(function() {
+                alert("Time to take your medicine!");
+            }, timeDiff);
+        });
+      
+    </script>
+</body>
+</html>
